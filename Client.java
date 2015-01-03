@@ -27,9 +27,11 @@ public class Client {
 		
 		BufferedReader in = null;
 		PrintWriter out = null;
+		URLConnection connection = null;
 		
 		try {
-			in = new BufferedReader(new InputStreamReader(url.openStream()));
+			connection = url.openConnection();
+			in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			out = new PrintWriter("log.txt");
 			
 			int hiByte, lowByte, value, count = 0;
