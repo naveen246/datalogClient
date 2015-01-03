@@ -12,8 +12,10 @@ public class Client {
 		String secondParamString = "";
 		URL url;
 		int valuesPerLine = 4;
+		String logFileName = "fast_log";
 		if(logType.equals("n")) {
 			valuesPerLine = 16;
+			logFileName = "normal_log";
 		}
 		if(args.length > 1) {
 			secondParam = args[1];
@@ -32,7 +34,7 @@ public class Client {
 		try {
 			connection = url.openConnection();
 			in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-			out = new PrintWriter("log.txt");
+			out = new PrintWriter(logFileName);
 			
 			int hiByte, lowByte, value, count = 0;
 			
